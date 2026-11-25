@@ -39,15 +39,56 @@ namespace MvcMonolithic.Controllers
                 return View(postPersonDto);
 
             }
-        } 
+        }
         #endregion
 
-        #region [- ReadIndex() -]
-        public async Task<IActionResult> Index()
+        #region [- ReadIndex(*) -]
+        public IActionResult Index()
         {
-            var result = await _personApplicationService.GetAllPerson();
-            return View(result);
+            return View();
         }
+        #endregion
+
+        #region [- ReadIndexGetAll(*) -]
+
+        public async Task<IActionResult> GetAll()
+        {
+            var response = await _personApplicationService.GetAllPerson();
+
+            return Json(response);
+        }
+
+        #endregion
+        #region [- Get(*) -]
+
+        public async Task<IActionResult> Get(int? id)
+        {
+            if (id is null || id <= 0)
+                return BadRequest();
+
+            var person = await _personApplicationService.GetPersonById(id.Value);
+
+            if (person is null)
+                return NotFound();
+
+            return Json(person);
+        }
+
+        #endregion
+
+        #region [- Post(*) -]
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] PostPersonDto postPersonDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _personApplicationService.Post(postPersonDto);
+
+            return Ok();
+        }
+
         #endregion
 
         #region [- ReadDetails() -]

@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Person";
+}
+
+<h1>Person</h1>
+
+<p>
+    <a href="/Person/Create">Create New</a>
+</p>
+
+<form id="personForm">
+
+    <div class="row mb-3">
+
+        <div class="col">
+            <label class="fw-bold">First Name</label>
+            <input id="firstName"
+                   type="text"
+                   class="form-control"
+                   placeholder="First name ..."
+                   autocomplete="off" />
+            <div id="firstNameValidationMessage"
+                 class="text-danger"></div>
+        </div>
+
+        <div class="col">
+            <label class="fw-bold">Last Name</label>
+            <input id="lastName"
+                   type="text"
+                   class="form-control"
+                   placeholder="Last name ..."
+                   autocomplete="off" />
+            <div id="lastNameValidationMessage"
+                 class="text-danger"></div>
+        </div>
+
+    </div>
+
+    <div class="row mb-3">
+
+        <div class="col-auto">
+            <input type="submit"
+                   id="btnAdd"
+                   class="btn btn-success"
+                   value="Add" />
+        </div>
+
+        <div class="col-auto">
+            <input type="button"
+                   id="btnRefresh"
+                   class="btn btn-secondary"
+                   value="Refresh" />
+        </div>
+
+        <div class="col-auto">
+            <strong id="resultMessage"
+                    class="text-secondary"></strong>
+        </div>
+
+    </div>
+
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody id="personTableBody">
+    </tbody>
+</table>
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Person Details</h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <dl class="row">
+                    <dt class="col-sm-4">ID</dt>
+                    <dd class="col-sm-8" id="detailsId"></dd>
+
+                    <dt class="col-sm-4">First Name</dt>
+                    <dd class="col-sm-8" id="detailsFirstName"></dd>
+
+                    <dt class="col-sm-4">Last Name</dt>
+                    <dd class="col-sm-8" id="detailsLastName"></dd>
+                </dl>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

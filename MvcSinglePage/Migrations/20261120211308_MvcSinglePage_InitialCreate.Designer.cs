@@ -8,11 +8,11 @@ using MvcMonolithic.Models.Services;
 
 #nullable disable
 
-namespace MvcMonolithic.Migrations
+namespace MvcSinglePage.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20261010125657_First_Migration")]
-    partial class First_Migration
+    [Migration("20261120211308_MvcSinglePage_InitialCreate")]
+    partial class MvcSinglePage_InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace MvcMonolithic.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MvcMonolithic.Models.DomainModel.PersonAggretes.Person", b =>
+            modelBuilder.Entity("MvcMonolithic.Models.DomainModel.PersonAggregates.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,16 +33,33 @@ namespace MvcMonolithic.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("People");
+                    b.ToTable("People", (string)null);
+                });
+
+            modelBuilder.Entity("MvcMonolithic.Models.DomainModel.ProductAggregates.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
                 });
 #pragma warning restore 612, 618
         }

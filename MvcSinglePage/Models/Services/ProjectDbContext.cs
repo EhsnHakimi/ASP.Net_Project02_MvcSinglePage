@@ -14,7 +14,7 @@ namespace MvcMonolithic.Models.Services
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                    "Data Source=.;Initial Catalog=MvcMonolithicDb;Integrated Security=True;Persist Security Info=False;Trust Server Certificate=True;");
+                    "Data Source=.;Initial Catalog=MvcSinglePageDb;Integrated Security=True;Persist Security Info=False;Trust Server Certificate=True;");
             }
         }
         public DbSet<Person> People { get; set; }

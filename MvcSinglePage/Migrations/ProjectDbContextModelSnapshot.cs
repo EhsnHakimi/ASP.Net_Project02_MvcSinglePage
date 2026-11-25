@@ -2,20 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcMonolithic.Models.Services;
 
 #nullable disable
 
-namespace MvcMonolithic.Migrations
+namespace MvcSinglePage.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20261027201903_AddProduct")]
-    partial class AddProduct
+    partial class ProjectDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +37,7 @@ namespace MvcMonolithic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Person", (string)null);
+                    b.ToTable("People", (string)null);
                 });
 
             modelBuilder.Entity("MvcMonolithic.Models.DomainModel.ProductAggregates.Product", b =>
